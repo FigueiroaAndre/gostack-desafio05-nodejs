@@ -8,7 +8,7 @@ import CreateCategoryIfNotExistsService from './CreateCategoryIfNotExistsService
 interface Request {
   title: string;
   value: number;
-  type: 'income' | 'outcome';
+  type: string;
   category: string;
 }
 
@@ -29,23 +29,6 @@ class CreateTransactionService {
     const createCategory = new CreateCategoryIfNotExistsService();
 
     const { id: category_id } = await createCategory.execute(category);
-
-    // let category_id: string;
-    // const checkCategoriesExists = await categoriesRepository.findOne({
-    // where: {
-    // title: category,
-    // },
-    // });
-    //
-    // if (!checkCategoriesExists) {
-    // const newCategory = categoriesRepository.create({
-    // title: category,
-    // });
-    // await categoriesRepository.save(newCategory);
-    // category_id = newCategory.id;
-    // } else {
-    // category_id = checkCategoriesExists.id;
-    // }
 
     const newTransaction = transactionsRepository.create({
       title,

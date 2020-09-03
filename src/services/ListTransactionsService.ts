@@ -8,7 +8,7 @@ interface TransactionWithCategory {
   id: string;
   title: string;
   value: number;
-  type: 'income' | 'outcome';
+  type: string;
   category: Category | undefined;
   created_at: Date;
   updated_at: Date;
